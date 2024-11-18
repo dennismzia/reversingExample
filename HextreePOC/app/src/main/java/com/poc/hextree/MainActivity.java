@@ -36,7 +36,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 homeText.setText(" text changes after button click");
-                flag7Solution();
+
+                Intent intent = new Intent(MainActivity.this, HextreeActivity.class);
+                startActivity(intent);
+
+
+
             }
         });
     }
