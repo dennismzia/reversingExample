@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 homeText.setText(" text changes after button click");
 
-                Intent intent = new Intent(MainActivity.this, HextreeActivity.class);
+                Intent intent = new Intent(MainActivity.this, ImplicitActivity.class);
                 startActivity(intent);
 
 
