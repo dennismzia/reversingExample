@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void flag13Solution(){
+        // meant to teach us about deep links one can solve this challenge by sending an intent or by creating a deep link
+        String link  =  "hex://flag?action=give-me";
+    }
+
     private void flag1Solution(){
 //        basic exported activity
         Intent intent = new Intent();
