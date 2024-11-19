@@ -13,11 +13,13 @@
         android:theme="@style/Theme.HextreePOC"
         tools:targetApi="31">
 
+<!--        category default is often required for Implicit Intents-->
         <activity
             android:name=".ImplicitActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="io.hextree.attacksurface.ATTACK_ME"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity >
 

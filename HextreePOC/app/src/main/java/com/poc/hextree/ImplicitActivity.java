@@ -19,6 +19,28 @@ public class ImplicitActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_implicit_acitivity);
 
+        flag11Solution();
+    }
+
+    private void flag11Solution(){
+//        Respond to an Implicit intent
+        Intent intent = getIntent();
+        if ("io.hextree.attacksurface.ATTACK_ME".equals(intent.getAction())){
+            String flag = intent.getStringExtra("flag");
+            flag = flag != null ? flag : "null";
+            Log.i("flag11Solution: ", flag );
+
+            // it is important not to forget the finish() call as it ensures the setresult is sent back
+            Intent intent2 = new Intent();
+            intent2.putExtra("token",  1094795585);
+            setResult(42,intent2);
+            finish();
+
+        }
+    }
+
+    private void flag10Solution() {
+        // hijack an imlpicit intent and forward it to correct app
         // Retrieve the intent that started this activity
         Intent intent = getIntent();
 
@@ -42,7 +64,6 @@ public class ImplicitActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Unexpected action: " + intent.getAction(), Toast.LENGTH_SHORT).show();
         }
-
         // Finish the activity after processing the intent
         finish();
     }
