@@ -27,7 +27,7 @@ public class DeepLinkActivity extends AppCompatActivity {
 
         Uri data = intent.getData();
         Log.i("data", String.valueOf(data));
-
+// extract values for the gotten intent and update them then send them to app. I was too busy to do this
         String solution = "hex://token??authToken=598cc075e4379d027f61c02866917c6f1d992c67&type=admin&authChallenge=89bfa7ac-98f8-47c7-ac51-1c482875b0b4";
 //        hex://token?authToken=598cc075e4379d027f61c02866917c6f1d992c67&type=user&authChallenge=89bfa7ac-98f8-47c7-ac51-1c482875b0b4
 
