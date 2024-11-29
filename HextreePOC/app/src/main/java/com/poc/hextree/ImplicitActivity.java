@@ -22,6 +22,8 @@ public class ImplicitActivity extends AppCompatActivity {
         flag12Solution();
     }
 
+
+
     private void flag12Solution() {
         // Get the incoming intent
         Intent intent = getIntent();
