@@ -42,6 +42,7 @@ public class DeepLinkActivity extends AppCompatActivity {
         // required to craft a uri with all intent specific data
         // below is the correct scheme technique
         String uri = "intent:#Intent;package=io.hextree.attacksurface;action=io.hextree.action.GIVE_FLAG;category=android.intent.category.BROWSABLE;B.flag=true;S.action=flag;S.com.android.browser.application_id=io.hextree.attacksurface;end;\n";
+
 /**  from chatgpt  Common Type Indicators in Intent URIs
  S: String Extra
 
